@@ -1,0 +1,26 @@
+.ColorPicker {
+  height: 80%;
+  width: 34%;
+}
+
+.colorpicker {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,7f29db+48,fc3a3a+100 */
+  background: rgb(30,87,153); /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  rgba(30,87,153,1) 0%, rgba(127,41,219,1) 48%, rgba(252,58,58,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  rgba(30,87,153,1) 0%,rgba(127,41,219,1) 48%,rgba(252,58,58,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  rgba(30,87,153,1) 0%,rgba(127,41,219,1) 48%,rgba(252,58,58,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#fc3a3a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  border-radius: 1rem;
+  margin: auto;
+}
+
+.pc-colorpicker {
+  width: 80%;
+  height: 34%;
+}
+
+.tablet-colorpicker {
+  width: 80%;
+  height: 95%;
+  margin: auto;
+}

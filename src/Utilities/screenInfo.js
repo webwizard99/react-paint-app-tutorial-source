@@ -1,0 +1,37 @@
+const screenInfo = (function(){
+  let height = 0;
+  let width = 0;
+
+  let mode = 'PC';
+
+  const setScreenInfo = function() {
+    const app = document.querySelector('.App');
+    const docDimensions = app.getBoundingClientRect();
+    height = docDimensions.height;
+    width = docDimensions.width;
+
+    if (height > width) {
+      if (width < 768) {
+        mode = 'Mobile';
+      } else {
+        mode = 'Tablet'
+      }
+    } else if (width > 976) {
+      mode = 'PC';
+    }
+    
+    console.log(`height: ${height}, width: ${width}, mode: ${mode}`);
+  }
+
+  return {
+    init: function() {
+      setScreenInfo();
+    },
+
+    getMode: function() {
+      return mode;
+    }
+  }
+}());
+
+export default screenInfo;

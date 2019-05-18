@@ -1,0 +1,23 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(120, 125, 130);
+}
+
+.main-app, .menubar-vertical, .menubar-horizontal {
+  display: flex;
+}
+
+.app-vertical, .menubar-vertical {
+  flex-direction: column;
+}
+
+.menubar-vertical {
+  width: 34vw;
+  height: 100vh;
+}
+
+.menubar-horizontal {
+  height: 34vh;
+  width: 100vw;
+}
