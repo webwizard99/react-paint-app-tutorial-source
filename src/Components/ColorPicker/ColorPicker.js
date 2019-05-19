@@ -9,27 +9,28 @@ class ColorPicker extends React.Component {
   }
 
   getColorPicker() {
-    const mode = this.props.mode;
-
-    switch(mode) {
-      case 'PC':
-        return (<div className="colorpicker pc-colorpicker">
-
-        </div>);
-      case 'Mobile':
-        return ('');
-      case 'Tablet':
-        return (<div className="colorpicker tablet-colorpicker">
-
-        </div>);
-      default:
-        return ''
-    }
+    
   }
   
   render() {
+    let pickerClass = '';
+    const mode = this.props.mode;
+    switch (mode) {
+      case 'PC':
+        pickerClass="colorpicker pc-colorpicker";
+        break;
+      case 'Mobile' :
+        pickerClass="colorpicker mobile-colorpicker";
+        break;
+      case 'Tablet':
+        pickerClass="colorpicker tablet-colorpicker";
+        break;
+      default:
+        pickerClass="colorpicker";
+    }
+    
     return (
-      <div className="ColorPicker">
+      <div className={pickerClass}>
         {this.getColorPicker()}
       </div>
     )   

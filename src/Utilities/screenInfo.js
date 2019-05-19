@@ -10,7 +10,7 @@ const screenInfo = (function(){
     height = docDimensions.height;
     width = docDimensions.width;
 
-    if (height > width) {
+    if (width <= 976) {
       if (width < 768) {
         mode = 'Mobile';
       } else {

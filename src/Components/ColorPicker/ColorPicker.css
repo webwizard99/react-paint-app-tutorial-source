@@ -20,7 +20,9 @@
 }
 
 .tablet-colorpicker {
-  width: 80%;
-  height: 95%;
+  width: 34%;
+  height: 86%;
   margin: auto;
+  margin-left: 2rem;
+  margin-top: 0;
 }

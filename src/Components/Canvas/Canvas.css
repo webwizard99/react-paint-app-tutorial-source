@@ -9,19 +9,25 @@
 }
 
 .pc-canvas {
-  height: 95vh;
-  width: 66%;
-  height: 95%;
+  height: 66vh;
+  width: 46vw;
+  margin: auto;
+  margin-top: 2rem;
+  margin-left: 1rem;
 }
 
 .mobile-canvas {
-  width: 95%;
-  height: 66vh;
-  margin: 2rem auto;
+  width: 80vw;
+  height: 46vh;
+  margin: auto;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 .tablet-canvas {
-  width: 95%;
-  height: 66vh;
-  margin: 2rem auto;
+  width: 90vw;
+  height: 60vh;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
 }
