@@ -20,7 +20,6 @@ const screenInfo = (function(){
       mode = 'PC';
     }
     
-    console.log(`height: ${height}, width: ${width}, mode: ${mode}`);
   }
 
   return {

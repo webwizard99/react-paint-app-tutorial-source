@@ -8,20 +8,25 @@ import Canvas from '../Canvas/Canvas';
 
 
 import screenInfo from '../../Utilities/screenInfo';
+import canvasManager from '../../Utilities/canvasManager';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     
     this.state = {
-      mode: ''
+      mode: '',
+      currentColor: 'rgb(120, 160, 200)'
     }
+
+    this.setCanvas = this.setCanvas.bind(this);
+    this.setCell = this.setCell.bind(this);
   }
 
   componentDidMount() {
     screenInfo.init();
     const mode = screenInfo.getMode();
-    console.log(mode);
+    
 
     this.setState({
       mode: mode
@@ -40,7 +45,6 @@ class App extends React.Component {
 
   getView() {
     const mode = this.state.mode;
-    console.log(mode);
     
     if (!mode) { return ''; }
     switch (mode) {
@@ -51,20 +55,29 @@ class App extends React.Component {
               <Palette mode={mode} />
               <ColorPicker mode={mode} />
             </div>
-            <Canvas mode={mode} />
+            <Canvas mode={mode}
+              setCanvas={this.setCanvas}
+              canvas={this.state.canvas}
+              setCell={this.setCell} />
           </div>
         );
       case 'Mobile':
         return (
         <div className="main-app app-vertical">
           <Palette mode={mode} />
-          <Canvas mode={mode} />
+          <Canvas mode={mode}
+            setCanvas={this.setCanvas}
+            canvas={this.state.canvas}
+            setCell={this.setCell} />
         </div>
         );
       case 'Tablet': 
         return (
           <div className="main-app app-vertical">
-            <Canvas mode={mode}/>
+            <Canvas mode={mode}
+              setCanvas={this.setCanvas}
+              canvas={this.state.canvas}
+              setCell={this.setCell} />
             <div className="menubar-horizontal">
               <ColorPicker mode={mode} />
               <Palette mode={mode} />
@@ -74,6 +87,21 @@ class App extends React.Component {
       default:
         console.log('mode unknown!');
     }
+  }
+
+  setCanvas(newCanvas) {
+    if (!newCanvas || newCanvas.length < 1) {
+      return false;
+    }
+    this.setState({
+      canvas: newCanvas
+    });
+  }
+
+  setCell(x,y) {
+    let model= [...this.state.canvas];
+    model[y][x] = this.state.currentColor;
+    this.setState({ canvas: model });
   }
 
   render() {

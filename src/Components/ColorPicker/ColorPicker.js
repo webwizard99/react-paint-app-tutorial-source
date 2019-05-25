@@ -17,16 +17,16 @@ class ColorPicker extends React.Component {
     const mode = this.props.mode;
     switch (mode) {
       case 'PC':
-        pickerClass="colorpicker pc-colorpicker";
+        pickerClass="Colorpicker pc-colorpicker";
         break;
       case 'Mobile' :
-        pickerClass="colorpicker mobile-colorpicker";
+        pickerClass="Colorpicker mobile-colorpicker";
         break;
       case 'Tablet':
-        pickerClass="colorpicker tablet-colorpicker";
+        pickerClass="Colorpicker tablet-colorpicker";
         break;
       default:
-        pickerClass="colorpicker";
+        pickerClass="Colorpicker";
     }
     
     return (

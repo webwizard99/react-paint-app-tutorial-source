@@ -16,16 +16,16 @@ class Palette extends React.Component {
     const mode = this.props.mode;
     switch (mode) {
       case 'PC':
-        paletteClass="palette pc-palette";
+        paletteClass="Palette pc-palette";
         break;
       case 'Mobile' :
-        paletteClass="palette mobile-palette";
+        paletteClass="Palette mobile-palette";
         break;
       case 'Tablet':
-        paletteClass="palette tablet-palette";
+        paletteClass="Palette tablet-palette";
         break;
       default:
-        paletteClass="palette";
+        paletteClass="Palette";
     }
     
     return (
