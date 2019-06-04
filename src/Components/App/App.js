@@ -53,7 +53,9 @@ class App extends React.Component {
           <div className="main-app">
             <div className="menubar-vertical">
               <Palette mode={mode} />
-              <ColorPicker mode={mode} />
+              <ColorPicker mode={mode} 
+                color={this.state.currentColor}
+              />
             </div>
             <Canvas mode={mode}
               setCanvas={this.setCanvas}
@@ -79,7 +81,9 @@ class App extends React.Component {
               canvas={this.state.canvas}
               setCell={this.setCell} />
             <div className="menubar-horizontal">
-              <ColorPicker mode={mode} />
+              <ColorPicker mode={mode} 
+                color={this.state.currentColor}
+              />
               <Palette mode={mode} />
             </div>
           </div>
@@ -100,6 +104,9 @@ class App extends React.Component {
 
   setCell(x,y) {
     let model= [...this.state.canvas];
+    if (model[y][x] === this.state.currentColor) {
+      return;
+    }
     model[y][x] = this.state.currentColor;
     this.setState({ canvas: model });
   }

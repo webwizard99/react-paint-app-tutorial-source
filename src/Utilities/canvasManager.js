@@ -2,8 +2,9 @@ const canvasManager = (function(){
   let canvasWidth = 0;
   let canvasHeight = 0;
 
-  const cellSize = 4;
-  const cellTemplate = 'rgb(255, 255, 255';
+  const maxCells = 500;
+  let cellSize = 16;
+  const cellTemplate = false;
 
   const getCanvasRect = function() {
     const canvasEle = document.querySelector('.Canvas');
@@ -16,11 +17,9 @@ const canvasManager = (function(){
     canvasHeight = canvasRect.height;
   }
 
-  const getCanvasSize = function() {
-    return {
-      width: canvasWidth,
-      height: canvasHeight
-    }
+  const calculateCellSize = function() {
+    let tempSize = Math.floor(Math.sqrt((canvasWidth * canvasHeight) / maxCells));
+    cellSize = tempSize;
   }
 
   return {
@@ -47,6 +46,7 @@ const canvasManager = (function(){
 
     init: function() {
       getCanvasRect();
+      calculateCellSize();
     },
 
     getCellSize: function() {

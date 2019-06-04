@@ -18,8 +18,11 @@ class Canvas extends React.Component {
 
   getCanvas() {
     const model = this.props.canvas;
-    if (!model) return '';
+    const cellSize = canvasManager.getCellSize();
+    
+    if (!model || model.length < 1) return '';
     return model.map((row, rowNum) => {
+      
       return (
         <div className="row" key={rowNum}>
           {row.map((cell, cellNum) => {
@@ -28,7 +31,7 @@ class Canvas extends React.Component {
                 cellContents={cell}
                 x={cellNum}
                 y={rowNum}
-                cellSize={canvasManager.getCellSize()}
+                cellSize={cellSize}
                 setCell={this.props.setCell}
               />
             );

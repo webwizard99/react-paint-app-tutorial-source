@@ -1,15 +1,13 @@
 import React from 'react';
 import './ColorPicker.css';
 
+import convert from 'color-convert';
+import { CustomPicker } from 'react-color';
+
 class ColorPicker extends React.Component {
   constructor(props) {
     super(props);
-
-    this.getColorPicker = this.getColorPicker.bind(this);
-  }
-
-  getColorPicker() {
-    
+ 
   }
   
   render() {
@@ -31,10 +29,10 @@ class ColorPicker extends React.Component {
     
     return (
       <div className={pickerClass}>
-        {this.getColorPicker()}
+        
       </div>
     )   
   }
 }
 
-export default ColorPicker;
+export default CustomPicker(ColorPicker);

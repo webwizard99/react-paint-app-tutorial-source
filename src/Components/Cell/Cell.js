@@ -7,6 +7,12 @@ class Cell extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  shouldComponentUpdate(nextProps) {
+    if (this.props !== nextProps) {
+      return true;
+    } else return false;
+  }
+
   handleClick(e) {
     if (e.buttons === 1 || e.type === 'mouseDown') {
       const refX = this.props.x;
@@ -18,11 +24,12 @@ class Cell extends React.Component {
   render() {
     return (
       <div className="Cell"
-      onMouseDown={this.handleClick}
-      onMouseOver={this.handleClick}
+      onPointerDown={this.handleClick}
+      onPointerMove={this.handleClick}
       style={ 
         {
-          backgroundColor: this.props.cellContents,
+          backgroundColor: this.props.cellContents ?
+            this.props.cellContents : '',
           height: `${this.props.cellSize}px`,
           width: `${this.props.cellSize}px`
         }
