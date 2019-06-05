@@ -11,6 +11,7 @@ class ColorPicker extends React.Component {
  
     this.handleChange = this.handleChange.bind(this);
     this.handleHueChange = this.handleHueChange.bind(this);
+    this.handleMouseUp = this.handleMouseUp.bind(this);
   }
 
   handleChange(color) {
@@ -22,7 +23,6 @@ class ColorPicker extends React.Component {
   }
   
   handleHueChange(color) {
-    console.log(this.props.color);
     const colorSplit = (this.props.color)
     .match(/(\d)+,\s*(\d)+,\s*(\d)+/)[0]
     .split(',');
@@ -31,13 +31,14 @@ class ColorPicker extends React.Component {
     const hslColor = convert.rgb.hsl([colorSplit[0], colorSplit[1], colorSplit[2]]);
 
     const hslComposite = { h: color.h, s: hslColor[1], l: hslColor[2] };
-    console.log(hslComposite);
     const rgbColor = convert.hsl.rgb(
       hslComposite.h, hslComposite.s, hslComposite.l);
-    const rgbText = `rgb(
-      ${rgbColor[0]} ,${rgbColor[1]} ,${rgbColor[2]} )`;
-    this.props.changeColor(rgbText);
-    
+    const rgbText = `rgb(${rgbColor[0]},${rgbColor[1]},${rgbColor[2]})`;
+    this.props.changeColor(rgbText);  
+  }
+
+  handleMouseUp() {
+    document.activeElement.blur();
   }
 
   render() {
@@ -65,12 +66,14 @@ class ColorPicker extends React.Component {
             <Saturation
               {...this.props}
               onChange={this.handleChange}
+              onMouseUp={this.handleMouseUp}
             />
           </div>
           <div className="HueContainer">
             <Hue
               {...this.props}
               onChange={this.handleHueChange}
+              onMouseUp={this.handleMouseUp}
             />
           </div>
         </div>
