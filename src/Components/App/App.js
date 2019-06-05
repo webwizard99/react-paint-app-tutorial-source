@@ -8,7 +8,6 @@ import Canvas from '../Canvas/Canvas';
 
 
 import screenInfo from '../../Utilities/screenInfo';
-import canvasManager from '../../Utilities/canvasManager';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,13 +20,13 @@ class App extends React.Component {
 
     this.setCanvas = this.setCanvas.bind(this);
     this.setCell = this.setCell.bind(this);
+    this.changeColor = this.changeColor.bind(this);
   }
 
   componentDidMount() {
     screenInfo.init();
     const mode = screenInfo.getMode();
-    
-
+  
     this.setState({
       mode: mode
     });
@@ -42,6 +41,11 @@ class App extends React.Component {
     }
   }
 
+  changeColor(newColor) {
+    this.setState({
+      currentColor: newColor
+    });
+  }
 
   getView() {
     const mode = this.state.mode;
@@ -55,6 +59,7 @@ class App extends React.Component {
               <Palette mode={mode} />
               <ColorPicker mode={mode} 
                 color={this.state.currentColor}
+                changeColor={this.changeColor}
               />
             </div>
             <Canvas mode={mode}
@@ -83,6 +88,7 @@ class App extends React.Component {
             <div className="menubar-horizontal">
               <ColorPicker mode={mode} 
                 color={this.state.currentColor}
+                changeColor={this.changeColor}
               />
               <Palette mode={mode} />
             </div>
