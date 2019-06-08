@@ -21,6 +21,7 @@
   width: 60%;
   box-shadow: 1px 1px 3px rgba(30, 30, 30, .6);
   margin: auto;
+  padding-top: .2rem;
 }
 
 .SaturationContainer, .HueContainer {
