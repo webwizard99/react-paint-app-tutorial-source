@@ -15,12 +15,17 @@ class App extends React.Component {
     
     this.state = {
       mode: '',
-      currentColor: 'rgb(120, 160, 200)'
+      currentColor: 'rgb(120, 160, 200)',
+      palette: [],
+      paletteIndex: 0
     }
 
     this.setCanvas = this.setCanvas.bind(this);
     this.setCell = this.setCell.bind(this);
     this.changeColor = this.changeColor.bind(this);
+    this.setPalette = this.setPalette.bind(this);
+    this.changePaletteIndex = this.changePaletteIndex.bind(this);
+    this.changePaletteColor = this.changePaletteColor.bind(this);
   }
 
   componentDidMount() {
@@ -56,10 +61,17 @@ class App extends React.Component {
         return (
           <div className="main-app">
             <div className="menubar-vertical">
-              <Palette mode={mode} />
+              <Palette mode={mode} 
+                palette={this.state.palette}
+                paletteIndex={this.state.paletteIndex}
+                setPalette={this.setPalette}
+                changePaletteIndex={this.changePaletteIndex}
+                changeColor={this.changeColor}
+              />
               <ColorPicker mode={mode} 
                 color={this.state.currentColor}
                 changeColor={this.changeColor}
+                changePaletteColor={this.changePaletteColor}
               />
             </div>
             <Canvas mode={mode}
@@ -71,7 +83,13 @@ class App extends React.Component {
       case 'Mobile':
         return (
         <div className="main-app app-vertical">
-          <Palette mode={mode} />
+          <Palette mode={mode}
+            palette={this.state.palette}
+            paletteIndex={this.state.paletteIndex}
+            setPalette={this.setPalette}
+            changePaletteIndex={this.changePaletteIndex}
+            changeColor={this.changeColor}
+          />
           <Canvas mode={mode}
             setCanvas={this.setCanvas}
             canvas={this.state.canvas}
@@ -89,8 +107,15 @@ class App extends React.Component {
               <ColorPicker mode={mode} 
                 color={this.state.currentColor}
                 changeColor={this.changeColor}
+                changePaletteColor={this.changePaletteColor}
               />
-              <Palette mode={mode} />
+              <Palette mode={mode}
+                palette={this.state.palette}
+                paletteIndex={this.state.paletteIndex}
+                setPalette={this.setPalette}
+                changePaletteIndex={this.changePaletteIndex}
+                changeColor={this.changeColor}
+              />
             </div>
           </div>
           );
@@ -115,6 +140,26 @@ class App extends React.Component {
     }
     model[y][x] = this.state.currentColor;
     this.setState({ canvas: model });
+  }
+
+  setPalette(newPalette) {
+    this.setState({
+      palette: newPalette
+    });
+  }
+
+  changePaletteIndex(newIndex) {
+    this.setState({
+      paletteIndex: newIndex
+    });
+  }
+
+  changePaletteColor(newColor) {
+    const newPalette = JSON.parse(JSON.stringify(this.state.palette));
+    newPalette[this.state.paletteIndex] = newColor;
+    this.setState({
+      palette: newPalette
+    });
   }
 
   render() {

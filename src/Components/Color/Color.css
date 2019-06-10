@@ -1,0 +1,11 @@
+.Color {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 2rem;
+  border: solid 1px black;
+  margin-left: 20%;
+}
+
+.activeColor {
+  border: solid 1px yellow;
+}

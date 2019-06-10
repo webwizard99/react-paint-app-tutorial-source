@@ -20,6 +20,7 @@ class ColorPicker extends React.Component {
     );
     const rgbText = `rgb(${rgbColor[0]}, ${rgbColor[1]}, ${rgbColor[2]})`;
     this.props.changeColor(rgbText);
+    this.props.changePaletteColor(rgbText);
   }
   
   handleHueChange(color) {
@@ -35,6 +36,7 @@ class ColorPicker extends React.Component {
       hslComposite.h, hslComposite.s, hslComposite.l);
     const rgbText = `rgb(${rgbColor[0]},${rgbColor[1]},${rgbColor[2]})`;
     this.props.changeColor(rgbText);  
+    this.props.changePaletteColor(rgbText);
   }
 
   handleMouseUp() {

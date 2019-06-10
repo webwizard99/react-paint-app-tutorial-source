@@ -1,5 +1,7 @@
 .Palette {
-  background: rgba(240, 245, 250, .2);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .pc-palette {
